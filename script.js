@@ -8,7 +8,6 @@ const eraserBtn = document.querySelector('#eraser');
 const inputCol = document.querySelector('#colpicker');
 const heading = document.querySelector("#head");
 
-
 let _side = 16;
 let _size = 256;
 let root = document.documentElement;
@@ -21,6 +20,7 @@ randCol.addEventListener('click', colorRandom);
 fixedCol.addEventListener('click', colorBlockFixed);
 eraserBtn.addEventListener('click', eraser);
 inputCol.addEventListener('change', inputColor);
+
 root.style.setProperty('--shadcol', 'red');
 
 
@@ -32,11 +32,12 @@ function inputColor(){
 function colorBlockFixed() {
     const blocks = document.querySelectorAll(".block");
     blocks.forEach((block) => {
-        
+      
 
     block.onmouseenter = () => block.style.background = inputCol.value;
   });
 }
+
 
 function colorRandom() {
     const blocks = document.querySelectorAll(".block");
@@ -48,7 +49,7 @@ function colorRandom() {
        
         block.removeEventListener('mouseenter',colorBlockFixed)
         isColorRandom = true;
-        block.onmouseenter = () => block.style.background = `rgb(${r},${g},${b})`
+        block.onmouseenter = () => block.style.background = `rgb(${r},${g},${b})`;
       })
   
 }
@@ -97,7 +98,7 @@ function createGrid(size, side) {
     const block = document.createElement("div");
     block.classList.add("block");
     grid.appendChild(block);
-    block.addEventListener("mouseenter", colorBlockFixed);
+    block.addEventListener("click", colorBlockFixed);
   }
 }
 
